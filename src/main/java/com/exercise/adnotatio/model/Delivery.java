@@ -1,0 +1,42 @@
+package com.exercise.adnotatio.model;
+
+import java.util.Set;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name="Deliveries")
+@ToString
+public class Delivery {
+  @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
+  @Column(name = "DeliveryId")
+  private Integer id;
+
+  @Column(name = "DeliveryName", nullable=false)
+  private String name;
+
+  @Column(name = "Cost", nullable=false)
+  private Double cost;
+
+  @ManyToMany
+  @JoinTable(name="DeliveriesRegions", joinColumns=@JoinColumn(name="DeliveryId"), inverseJoinColumns=@JoinColumn(name="RegionId"))
+  private Set<Region> regions;
+}

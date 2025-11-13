@@ -38,4 +38,8 @@ public class Customer {
 
   @OneToOne(mappedBy="customer", cascade=CascadeType.ALL)
   private Contact contact;
+
+  public void substractBalance(double price){
+    this.balance -= price;
+  }
 }

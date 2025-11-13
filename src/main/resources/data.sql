@@ -12,9 +12,9 @@ VALUES
 
 INSERT INTO Customers (FirstName, LastName, Balance)
 VALUES
-    ('Alice', 'Johnson', 50000000),
-    ('Ben', 'Kornel', 50000000),
-    ('Charles', 'Lee', 50000000);
+    ('Alice', 'Johnson', 5000000),
+    ('Ben', 'Kornel', 5000000),
+    ('Charles', 'Lee', 5000000);
 
 INSERT INTO Contacts (CustomerId, PhoneNumber, Email)
 VALUES
@@ -28,7 +28,7 @@ VALUES
     ('Mouse', 100000, 9, 0),
     ('Monitor', 100000, 5, 0),
     ('Laptop', 7000000, 3, 0),
-    ('Pearbook Mini', 10000000, 2, 0);
+    ('Pearbook Mini', 10000000, 2, 1);
 
 INSERT INTO Orders (OrderDate, ArrivalDate, CustomerId, DeliveryId, DeliveryFee)
 VALUES

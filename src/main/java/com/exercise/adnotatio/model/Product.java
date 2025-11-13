@@ -38,6 +38,10 @@ public class Product {
   @Column(name = "Deactivated", nullable=false)
   private Boolean deactivated;
 
+  public void substractStock(int qty){
+    this.unitStock -= qty;
+  }
+
   @Override
   public String toString() {
       NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));

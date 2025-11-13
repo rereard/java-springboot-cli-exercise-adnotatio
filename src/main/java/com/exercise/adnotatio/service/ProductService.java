@@ -1,5 +1,7 @@
 package com.exercise.adnotatio.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +22,24 @@ public class ProductService {
   public Page<Product> getProductsByPage(int pageNumber) {
     Pageable pageable = PageRequest.of(pageNumber, PAGE_SIZE, Sort.by("id"));
     return productRepository.findAll(pageable);
+  }
+
+  public List<Product> getAllProducts(){
+    return productRepository.findAll();
+  }
+
+  public Product findProductById(Integer id){
+    return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product dengan ID "+ id + " tidak ditemukan\n"));
+  }
+
+  public void substractStock(Product product, Integer qty){
+    Product selectedProduct = productRepository.findById(product.getId()).orElseThrow(() -> new RuntimeException("Product dengan ID "+ product.getId() + " tidak ditemukan"));
+    selectedProduct.substractStock(qty);
+    productRepository.save(selectedProduct);
+  }
+
+  public Product findProductById(Integer id, boolean excludeUnlisted){
+    return productRepository.findById(id).filter(p -> !p.getDeactivated()).orElseThrow(() -> new RuntimeException("Product dengan ID "+ id + " tidak ditemukan"));
   }
 
   public void productDelete(Integer id){
@@ -49,9 +69,4 @@ public class ProductService {
     productRepository.save(selectedProduct);
     return selectedProduct;
   }
-
-  public Product findProductById(Integer id){
-    return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product dengan ID "+ id + " tidak ditemukan"));
-  }
-
 }

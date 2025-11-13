@@ -8,10 +8,12 @@ import org.springframework.stereotype.Component;
 public class MainMenu {
   private final Scanner userInput;
   private final ProductMenu productMenu;
+  private final OrderMenu orderMenu;
 
-  public MainMenu(Scanner userInput, ProductMenu productMenu) {
+  public MainMenu(Scanner userInput, ProductMenu productMenu, OrderMenu orderMenu) {
       this.userInput = userInput;
       this.productMenu = productMenu;
+      this.orderMenu = orderMenu;
   }
   
   public void run(){
@@ -32,6 +34,7 @@ public class MainMenu {
       }
       switch (input){
         case 1 -> productMenu.run();
+        case 2 -> orderMenu.run();
         case 4 -> {
             System.out.println("Terima kasih telah menggunakan aplikasi ini.");
             System.exit(1);

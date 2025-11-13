@@ -1,5 +1,8 @@
 package com.exercise.adnotatio.model;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -40,4 +43,18 @@ public class OrderDetail {
   @MapsId("orderId")
   @JoinColumn(name="OrderId")
   private Order order;
+
+  public Double getTotalPrice(){
+    return quantity * unitPrice;
+  }
+
+  public String getFormatedPrice(){
+    NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+    return formatter.format(unitPrice);
+  }
+
+  public String getFormatedTotalPrice(){
+    NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+    return formatter.format(quantity*unitPrice);
+  }
 }

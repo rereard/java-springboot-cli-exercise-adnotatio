@@ -1,5 +1,7 @@
 package com.exercise.adnotatio.model;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -15,7 +17,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
@@ -23,7 +24,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @Entity
 @Table(name="Deliveries")
-@ToString
 public class Delivery {
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -39,4 +39,14 @@ public class Delivery {
   @ManyToMany
   @JoinTable(name="DeliveriesRegions", joinColumns=@JoinColumn(name="DeliveryId"), inverseJoinColumns=@JoinColumn(name="RegionId"))
   private Set<Region> regions;
+
+  @Override
+  public String toString() {
+    return String.format("[%s] %s - Biaya: %s", id, name, getFormatedPrice());
+  }
+
+  public String getFormatedPrice(){
+    NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+    return formatter.format(cost);
+  }
 }

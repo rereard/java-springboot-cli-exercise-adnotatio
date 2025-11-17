@@ -27,14 +27,17 @@ public class Customer {
   @Column(name = "CustomerId")
   private Integer id;
 
-  @Column(name = "FirstName", nullable=false)
+  @Column(name = "FirstName", nullable=false, length=50)
   private String firstName;
 
-  @Column(name = "LastName", nullable=false)
+  @Column(name = "LastName", nullable=false, length=50)
   private String lastName;
 
-  @Column(name = "Balance")
-  private double balance;
+  @Column(name = "Balance", nullable=false)
+  private double balance = 0;
+
+  @Column(nullable=false, name="Deleted")
+  private Boolean deleted = false;
 
   @OneToOne(mappedBy="customer", cascade=CascadeType.ALL)
   private Contact contact;

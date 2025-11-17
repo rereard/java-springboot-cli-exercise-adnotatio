@@ -28,10 +28,10 @@ public class OrderDetail {
   @EmbeddedId
   private OrderDetailId orderDetailId;
 
-  @Column(name = "UnitPrice")
+  @Column(name = "UnitPrice", nullable=false)
   private Double unitPrice;
 
-  @Column(name = "Quantity")
+  @Column(name = "Quantity", nullable=false)
   private Integer quantity;
   
   @ManyToOne

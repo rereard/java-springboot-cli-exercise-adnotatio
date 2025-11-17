@@ -26,7 +26,7 @@ public class Product {
   @Column(name = "ProductId")
   private Integer id;
 
-  @Column(name = "ProductName", nullable=false)
+  @Column(name = "ProductName", nullable=false, length=200)
   private String name;
 
   @Column(name = "Price", nullable=false)
@@ -36,7 +36,7 @@ public class Product {
   private Integer unitStock;
 
   @Column(name = "Deactivated", nullable=false)
-  private Boolean deactivated;
+  private Boolean deactivated = false;
 
   public void substractStock(int qty){
     this.unitStock -= qty;

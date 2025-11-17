@@ -1,0 +1,19 @@
+package com.exercise.adnotatio.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class CheckoutResponse {
+  private Integer orderId;
+  private Double totalAmount;
+  private Double deliveryFee;
+  private Integer totalItems;
+}

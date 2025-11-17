@@ -10,11 +10,11 @@ VALUES
     ('Express Delivery', 5000),
     ('North Delivery', 10000);
 
-INSERT INTO Customers (FirstName, LastName, Balance)
+INSERT INTO Customers (FirstName, LastName, Balance, Deleted)
 VALUES
-    ('Alice', 'Johnson', 5000000),
-    ('Ben', 'Kornel', 5000000),
-    ('Charles', 'Lee', 5000000);
+    ('Alice', 'Johnson', 5000000, 0),
+    ('Ben', 'Kornel', 5000000, 0),
+    ('Charles', 'Lee', 5000000, 0);
 
 INSERT INTO Contacts (CustomerId, PhoneNumber, Email)
 VALUES
